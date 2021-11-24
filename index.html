@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <title>Multiplayer Yume Nikki Fangame Nexus</title>
+  <meta charset="utf-8">
+  <meta name="description" content="Play Yume Nikki and Yume Nikki Fangames online with your friends, no downloads required.">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="nexus.css">
+</head>
+<body>
+  <div id="nexus">
+    <div id="doors">
+      <div class="doorRow">
+        <div class="spacer"></div>
+        <div id="door2kki" class="door" data-game-id="2kki">
+          <img class="logo" src="images/logo_2kki.png" />
+          <img class="doorImg" width="68" height="120" src="images/door_2kki.gif" />
+        </div>
+        <div id="doorLcddem" class="door" data-game-id="lcddem">
+          <img class="logo" src="images/logo_lcddem.png" />
+          <img class="doorImg" width="78" height="111" src="images/door_lcddem.gif" style="margin-bottom: 8px;" />
+        </div>
+        <div class="spacer"></div>
+      </div>
+      <div class="doorRow">
+        <div id="doorYume" class="door" data-game-id="yume">
+          <img class="logo" src="images/logo_yume.png" />
+          <img class="doorImg" width="68" height="120" src="images/door_yume.gif" />
+        </div>
+        <div class="spacer"></div>
+        <div class="spacer"></div>
+        <div id="doorFlow" class="door" data-game-id="flow">
+          <img class="logo" src="images/logo_flow.png" />
+          <img class="doorImg" width="68" height="120" src="images/door_flow.gif" />
+        </div>
+      </div>
+    </div>
+  </div>
+  <svg id="zoom">
+    <rect id="bg" width="100%" height="100%" fill="black" mask="url(#zoomMask)" />
+    <mask id="zoomMask">
+      <rect id="maskBg" width="100%" height="100%" fill="black" />
+      <circle id="circle" fill="black" />
+    </mask>
+  </svg>
+  <script>
+    const nexus = document.getElementById('nexus');
+    const doors = document.querySelectorAll('.door');
+    for (let door of doors) {
+      door.onclick = function () {
+        if (!this.classList.contains('active')) {
+          door.classList.add('active');
+          doDoorAnim(nexus, door);
+        }
+      };
+    }
+
+    function doDoorAnim(nexus, door) {
+      const overlay = document.getElementById('overlay');
+      const circle = document.getElementById('circle');
+      const initialRadius = Math.max(nexus.offsetWidth, nexus.offsetHeight) * 0.75;
+      const rect = door.getBoundingClientRect();
+      const centerX = ((rect.x + door.offsetWidth / 2) / nexus.offsetWidth) * 100;
+      const centerY = ((rect.y + door.offsetHeight / 2) / nexus.offsetHeight) * 100;
+      circle.setAttribute('r', initialRadius);
+      circle.setAttribute('cx', `${centerX}%`);
+      circle.setAttribute('cy', `${centerY}%`);
+      circle.style.transformOrigin = `calc(${centerX}% + 64px) calc(${centerY}% + 8px)`;
+
+      const cssAnim = document.createElement('style');
+      cssAnim.type = 'text/css';
+      const rules = document.createTextNode(`
+        @keyframes maskAnim {
+          from {
+            fill: black;
+          }
+          to {
+            fill: white;
+          }
+        }
+
+        @keyframes zoomAnim {
+          from {
+            r: ${initialRadius};
+            transform: rotate(0deg);
+          }
+          to {
+            r: 128px;
+            transform: rotate(360deg);
+          }
+        }
+      `);
+      cssAnim.appendChild(rules);
+      document.querySelector('head').appendChild(cssAnim);
+
+      playAudio('door_effect.wav');
+
+      const gameId = door.dataset.gameId;
+
+      window.setTimeout(function () {
+        playAudio(`door_${gameId}.wav`, 0.5);
+        const doorImg = door.querySelector('.doorImg');
+        doorImg.src = doorImg.src.replace('door_', 'door_open_');
+        window.setTimeout(function () {
+          window.location.href = `/${gameId}/`;
+        }, 1500);
+      }, 1000);
+    }
+
+    function playAudio(filename, volume) {
+      const audio = new Audio(`audio/${filename}`);
+      audio.volume = volume || 1;
+      audio.play();
+    }
+  </script> 
+</body>
+</html>
