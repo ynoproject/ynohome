@@ -75,3 +75,27 @@ img {
   -webkit-user-select: none;
   user-select: none;
 }
+
+@media only screen and (min-width: 704px) and (max-height: 960px) {
+  #nexus {
+    flex-direction: row;
+    align-items: center;
+  }
+
+  #doors {
+    flex-direction: row;
+    align-items: center;
+    height: 100%;
+  }
+
+  .doorRow {
+    flex-flow: column-reverse;
+    align-items: center;
+    height: 100%;
+    width: 20%;
+  }
+
+  .spacer {
+    height: 15%;
+  }
+}
