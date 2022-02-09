@@ -1,4 +1,13 @@
+@font-face {
+  font-family: 'PGothic';
+  src: url('fonts/ms-pgothic.woff2') format('woff2'),
+       url('fonts/ms-pgothic.woff') format('woff');
+}
+
 html {
+  font-family: 'MS PGothic', 'PGothic';
+  font-size: 24px;
+  color: rgba(194, 146, 200, 1) !important;
   height: 100%;
 }
 
@@ -63,8 +72,30 @@ body {
   height: 60px;
 }
 
+.playerCountContainer {
+  display: flex;
+  align-items: center;
+  padding-top: 8px;
+}
+
+.playerCountContainer path {
+  fill: url(#baseGradient);
+  filter: url(#dropShadow);
+}
+
+.playerCountContainer label {
+  padding-left: 8px;
+  pointer-events: none;
+}
+
 .spacer {
   width: 15%;
+}
+
+.unselectable {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  user-select: none;
 }
 
 img {
@@ -74,6 +105,23 @@ img {
   -webkit-touch-callout: none;
   -webkit-user-select: none;
   user-select: none;
+}
+
+label {
+  background-image: linear-gradient(to bottom, rgba(217, 179, 228, 1) 0 43.75%, rgba(205, 163, 214, 1) 43.75% 56.25%, rgba(194, 146, 200, 1) 56.25% 68.75%, rgba(182, 130, 186, 1) 68.75% 81.25%, rgba(172, 115, 173, 1) 81.25% 87.5%, rgba(159, 98, 158, 1) 87.5% 93.75%, rgba(148, 87, 144, 1) 93.75% 100%, rgba(137, 87, 131, 1) 100% 100%) !important;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  filter: drop-shadow(1.5px 1.5px rgba(0, 0, 0, 1));
+}
+
+/* Safari only */
+@media not all and (min-resolution:.001dpcm) {
+   /* Don't use text background on Safari since it doesn't repeat properly */
+   label {
+    -webkit-text-fill-color: unset;
+    background-image: none !important;
+  }
 }
 
 @media only screen and (min-width: 704px) and (max-height: 960px) {

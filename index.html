@@ -14,6 +14,7 @@
         <div id="doorUnevenDream" class="door" data-game-id="unevendream">
           <img class="logo" src="images/logo_unevendream.png" />
           <img class="doorImg" width="68" height="120" src="images/door_unevendream.gif" />
+          <div class="playerCountContainer"></div>
         </div>
       </div>
       <div class="doorRow">
@@ -21,11 +22,13 @@
         <div id="doorAmillusion" class="door" data-game-id="amillusion">
           <img class="logo" src="images/logo_amillusion.png" />
           <img class="doorImg" width="68" height="120" src="images/door_amillusion.gif" />
+          <div class="playerCountContainer"></div>
         </div>
         <div class="spacer"></div>
         <div id="doorDeepDreams" class="door" data-game-id="deepdreams">
           <img class="logo" src="images/logo_deepdreams.png" />
           <img class="doorImg" width="68" height="120" src="images/door_deepdreams.gif" />
+          <div class="playerCountContainer"></div>
         </div>
         <div class="spacer"></div>
       </div>
@@ -33,12 +36,14 @@
         <div id="door2kki" class="door" data-game-id="2kki">
           <img class="logo" src="images/logo_2kki.png" />
           <img class="doorImg" width="68" height="120" src="images/door_2kki.gif" />
+          <div class="playerCountContainer"></div>
         </div>
         <div class="spacer"></div>
         <div class="spacer"></div>
         <div id="doorYume" class="door" data-game-id="yume">
           <img class="logo" src="images/logo_yume.png" />
           <img class="doorImg" width="68" height="120" src="images/door_yume.gif" />
+          <div class="playerCountContainer"></div>
         </div>
       </div>
       <div class="doorRow">
@@ -46,11 +51,13 @@
         <div id="doorSomeday" class="door" data-game-id="someday">
           <img class="logo" src="images/logo_someday.png" />
           <img class="doorImg" width="68" height="120" src="images/door_someday.gif" />
+          <div class="playerCountContainer"></div>
         </div>
         <div class="spacer"></div>
         <div id="doorPrayers" class="door" data-game-id="prayers">
           <img class="logo" src="images/logo_prayers.png" />
           <img class="doorImg" width="68" height="120" src="images/door_prayers.gif" />
+          <div class="playerCountContainer"></div>
         </div>
         <div class="spacer"></div>
       </div>
@@ -58,10 +65,43 @@
         <div id="doorFlow" class="door" data-game-id="flow">
           <img class="logo" src="images/logo_flow.png" />
           <img class="doorImg" width="68" height="120" src="images/door_flow.gif" />
+          <div class="playerCountContainer"></div>
         </div>
     </div>
   </div>
-  <svg id="zoom">
+  <template>
+    <svg viewBox="0 0 18 18" xmlns="http://www.w3.org/2000/svg" width="24" height="24">
+      <path d="M 9 4 A 1 1 90 0 0 9 9 A 1 1 90 0 0 9 4 M 5 17 C 5 12 6 10 9 10 C 12 10 13 12 13 17 Q 9 19 5 17 M 5 0 A 1 1 90 0 0 5 5 A 1 1 90 0 0 5 0 M 1 13 C 1 8 2 6 5 6 C 5.375 6 5.5 6 6.25 6.125 C 6 7.75 7.5 9.25 8.75 9.25 Q 8.875 9.5 8.875 9.75 C 7.125 9.75 5.25 10.75 5 13.875 Q 2.625 13.875 1 13 M 13 0 A 1 1 90 0 1 13 5 A 1 1 90 0 1 13 0 M 17 13 C 17 8 16 6 13 6 C 12.625 6 12.5 6 11.75 6.125 C 12 7.75 10.5 9.25 9.25 9.25 Q 9.125 9.5 9.125 9.75 C 10.875 9.75 12.75 10.75 13 13.875 Q 15.375 13.875 17 13" />
+    </svg>
+  </template>
+  <svg xmlns="http://www.w3.org/2000/svg" width="0" height="0">
+    <defs>
+      <linearGradient id="baseGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+        <stop stop-color="rgba(217, 179, 228, 1)" offset="0%"></stop>
+        <stop stop-color="rgba(205, 163, 214, 1)" offset="43.75%"></stop>
+        <stop stop-color="rgba(194, 146, 200, 1)" offset="56.25%"></stop>
+        <stop stop-color="rgba(182, 130, 186, 1)" offset="68.75%"></stop>
+        <stop stop-color="rgba(172, 115, 173, 1)" offset="81.25%"></stop>
+        <stop stop-color="rgba(159, 98, 158, 1)" offset="87.5%"></stop>
+        <stop stop-color="rgba(148, 87, 144, 1)" offset="93.75%"></stop>
+        <stop stop-color="rgba(137, 87, 131, 1)" offset="100%"></stop>
+      </linearGradient>
+      <linearGradient id="altGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+        <stop stop-color="rgba(123, 82, 134, 1)" offset="0%"></stop>
+        <stop stop-color="rgba(110, 65, 120, 1)" offset="43.75%"></stop>
+        <stop stop-color="rgba(99, 48, 105, 1)" offset="56.25%"></stop>
+        <stop stop-color="rgba(86, 30, 91, 1)" offset="68.75%"></stop>
+        <stop stop-color="rgba(75, 12, 76, 1)" offset="81.25%"></stop>
+        <stop stop-color="rgba(62, 0, 61, 1)" offset="87.5%"></stop>
+        <stop stop-color="rgba(50, 0, 45, 1)" offset="93.75%"></stop>
+        <stop stop-color="rgba(37, 0, 31, 1)" offset="100%"></stop>
+      </linearGradient>
+      <filter id="dropShadow">
+        <feDropShadow dx="1" dy="1" stdDeviation="0.2" flood-color="rgba(0, 0, 0, 1)"></feDropShadow>
+      </filter>
+    </defs>
+  </svg>
+  <svg id="zoom" xmlns="http://www.w3.org/2000/svg">
     <rect id="bg" width="100%" height="100%" fill="black" mask="url(#zoomMask)" />
     <mask id="zoomMask">
       <rect id="maskBg" width="100%" height="100%" fill="black" />
@@ -72,6 +112,20 @@
     const nexus = document.getElementById('nexus');
     const doors = document.querySelectorAll('.door');
     for (let door of doors) {
+      const playerCountContainer = door.querySelector('.playerCountContainer');
+      const playerCount = document.createElement('label');
+
+      playerCount.classList.add('unselectable');
+      playerCount.textContent = '?';
+
+      fetch(`connect/${door.dataset.gameId}/players`)
+        .then(response => response.text())
+        .then(count => !isNaN(count) && (playerCount.textContent = count))
+        .catch(err => console.error(err));
+
+      playerCountContainer.appendChild(document.getElementsByTagName('template')[0].content.cloneNode(true));
+      playerCountContainer.appendChild(playerCount);
+
       door.onclick = function () {
         if (!this.classList.contains('active')) {
           door.classList.add('active');
