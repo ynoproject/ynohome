@@ -113,25 +113,31 @@
     const doors = document.querySelectorAll('.door');
     for (let door of doors) {
       const playerCountContainer = door.querySelector('.playerCountContainer');
-      const playerCount = document.createElement('label');
+      const playerCountLabel = document.createElement('label');
 
-      playerCount.classList.add('unselectable');
-      playerCount.textContent = '?';
+      playerCountLabel.classList.add('unselectable');
+      playerCountLabel.textContent = '?';
 
-      fetch(`connect/${door.dataset.gameId}/players`)
-        .then(response => response.text())
-        .then(count => !isNaN(count) && (playerCount.textContent = count))
-        .catch(err => console.error(err));
+      fetchAndUpdatePlayerCount(door.dataset.gameId, playerCountLabel);
 
       playerCountContainer.appendChild(document.getElementsByTagName('template')[0].content.cloneNode(true));
-      playerCountContainer.appendChild(playerCount);
+      playerCountContainer.appendChild(playerCountLabel);
 
-      door.onclick = function () {
+      door.onclick = () => {
         if (!this.classList.contains('active')) {
           door.classList.add('active');
           doDoorAnim(nexus, door);
         }
       };
+    }
+
+    window.setInterval(() => doors.forEach(door => fetchAndUpdatePlayerCount(door.dataset.gameId, door.querySelector('.playerCountContainer label'))), 60000);
+
+    function fetchAndUpdatePlayerCount(gameId, playerCountLabel) {
+      fetch(`connect/${gameId}/players`)
+        .then(response => response.text())
+        .then(count => !isNaN(count) && (playerCountLabel.textContent = count))
+        .catch(err => console.error(err));
     }
 
     function doDoorAnim(nexus, door) {
@@ -177,11 +183,11 @@
 
       const gameId = door.dataset.gameId;
 
-      window.setTimeout(function () {
+      window.setTimeout(() => {
         playAudio(`door_${gameId}.wav`, 0.5);
         const doorImg = door.querySelector('.doorImg');
         doorImg.src = doorImg.src.replace('door_', 'door_open_');
-        window.setTimeout(function () {
+        window.setTimeout(() => {
           window.location.href = `/${gameId}/`;
         }, 1500);
       }, 1000);
