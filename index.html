@@ -123,7 +123,7 @@
       playerCountContainer.appendChild(document.getElementsByTagName('template')[0].content.cloneNode(true));
       playerCountContainer.appendChild(playerCountLabel);
 
-      door.onclick = () => {
+      door.onclick = function () {
         if (!this.classList.contains('active')) {
           door.classList.add('active');
           doDoorAnim(nexus, door);
