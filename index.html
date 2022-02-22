@@ -141,7 +141,7 @@
     }
 
     function doDoorAnim(nexus, door) {
-      const overlay = document.getElementById('overlay');
+      const zoom = document.getElementById('zoom');
       const circle = document.getElementById('circle');
       const initialRadius = Math.max(nexus.offsetWidth, nexus.offsetHeight) * 0.75;
       const rect = door.getBoundingClientRect();
@@ -177,7 +177,7 @@
       `);
       cssAnim.appendChild(rules);
       document.querySelector('head').appendChild(cssAnim);
-      document.getElementById('zoom').classList.add('active');
+      zoom.classList.add('active');
 
       playAudio('door_effect.wav');
 
@@ -188,6 +188,12 @@
         const doorImg = door.querySelector('.doorImg');
         doorImg.src = doorImg.src.replace('door_', 'door_open_');
         window.setTimeout(() => {
+          window.setTimeout(() => {
+            zoom.classList.remove('active');
+            cssAnim.remove();
+            doorImg.src = doorImg.src.replace('_open', '');
+            door.classList.remove('active');
+          }, 100);
           window.location.href = `/${gameId}/`;
         }, 1500);
       }, 1000);
