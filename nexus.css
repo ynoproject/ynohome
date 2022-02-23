@@ -25,6 +25,26 @@ body {
   background: url(images/bg.png);
   background-repeat: no-repeat;
   background-size: cover;
+  image-rendering: pixelated;
+  image-rendering: crisp-edges;
+}
+
+#siteLogo {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  fill: none;
+  stroke: white !important;
+}
+
+#siteLogo svg {
+  margin: auto;
+  width: 25%;
+  overflow: visible;
 }
 
 #zoom {
@@ -128,6 +148,10 @@ label {
   #nexus {
     flex-direction: row;
     align-items: center;
+  }
+
+  #siteLogo svg {
+    height: 25%;
   }
 
   #doors {
