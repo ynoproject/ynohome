@@ -38,7 +38,8 @@ body {
   width: 100%;
   height: 100%;
   fill: none;
-  stroke: white !important;
+  stroke: white;
+  pointer-events: none;
 }
 
 #siteLogo svg {
@@ -165,6 +166,10 @@ label {
     align-items: center;
     height: 100%;
     width: 20%;
+  }
+
+  .door {
+    max-width: unset;
   }
 
   .spacer {
