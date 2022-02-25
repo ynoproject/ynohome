@@ -91,6 +91,7 @@ body {
 
 .logo {
   height: 60px;
+  max-width: 180px;
 }
 
 .playerCountContainer {
