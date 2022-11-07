@@ -13,46 +13,43 @@ html {
 
 body {
   margin: 0;
-  height: 100%;
   background-color: black;
+}
+
+body > svg {
+  display: block;
 }
 
 #nexus {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  height: 100%;
-  background: url(images/bg.png);
-  background-repeat: no-repeat;
-  background-size: cover;
+  min-height: 100vh;
+  overflow-x: hidden;
   image-rendering: pixelated;
   image-rendering: crisp-edges;
 }
 
 #siteLogo {
-  position: absolute;
   display: flex;
   justify-content: center;
   align-items: center;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  fill: none;
-  stroke: white;
-  pointer-events: none;
+  backface-visibility: hidden;
+  transform: translateZ(0) scale(1, 1);
 }
 
-#siteLogo svg {
+#siteLogo img {
+  height: 142px;
   margin: auto;
-  width: 25%;
-  overflow: visible;
+  padding: 64px 0;
 }
 
 #zoom {
-  position: absolute;
+  position: fixed;
   top: 0;
   width: 100%;
   height: 100%;
+  z-index: 2;
 }
 
 #zoom:not(.active) {
@@ -69,30 +66,51 @@ body {
 
 #doors {
   display: flex;
-  flex-direction: column;
-}
-
-.doorRow {
-  display: flex;
-  justify-content: space-evenly;
-  width: 100%;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  padding-bottom: 32px;
 }
 
 .door {
-  cursor: pointer;
   display: flex;
-  flex-basis: min-content;
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  max-width: 20%;
-  height: 188px;
+  padding: 16px 0;
+  min-width: 224px;
+  min-height: 224px;
+  cursor: pointer;
+}
+
+.doorImgContainer {
+  width: 68px;
+  height: 120px;
+}
+
+.doorImg {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+
+.doorShadowImg {
+  width: 180px;
+  height: 64px;
+  margin-top: -32px;
+  margin-left: -56px;
+}
+
+.logoContainer {
+  display: flex;
+  justify-content: center;
+  width: 180px;
+  height: 60px;
 }
 
 .logo {
-  height: 60px;
-  max-width: 180px;
-  image-rendering: auto;
+  height: 100%;
+  z-index: 1;
 }
 
 .playerCountContainer {
@@ -111,8 +129,15 @@ body {
   pointer-events: none;
 }
 
-.spacer {
-  width: 15%;
+#background {
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  background: url(images/bg.png);
+  background-size: cover;
+  background-position-x: center;
+  z-index: -1;
 }
 
 .unselectable {
@@ -138,43 +163,33 @@ label {
   filter: drop-shadow(1.5px 1.5px rgba(0, 0, 0, 1));
 }
 
+.fade {
+  opacity: 0;
+  transition: opacity 0.325s ease-in-out;
+}
+
+.fadeUp {
+  padding-top: 128px;
+  transition: opacity 0.325s ease-in-out, padding-top 0.325s ease-in-out;
+}
+
+.fadeSlow {
+  transition-duration: 0.75s;
+}
+
+.fadeIn {
+  opacity: 1;
+}
+
+.fadeIn.fadeUp {
+  padding-top: 0px;
+}
+
 /* Safari only */
 @media not all and (min-resolution:.001dpcm) {
    /* Don't use text background on Safari since it doesn't repeat properly */
    label {
     -webkit-text-fill-color: unset;
     background-image: none !important;
-  }
-}
-
-@media only screen and (min-width: 704px) and (max-height: 960px) {
-  #nexus {
-    flex-direction: row;
-    align-items: center;
-  }
-
-  #siteLogo svg {
-    height: 25%;
-  }
-
-  #doors {
-    flex-direction: row;
-    align-items: center;
-    height: 100%;
-  }
-
-  .doorRow {
-    flex-flow: column-reverse;
-    align-items: center;
-    height: 100%;
-    width: 20%;
-  }
-
-  .door {
-    max-width: unset;
-  }
-
-  .spacer {
-    height: 15%;
   }
 }

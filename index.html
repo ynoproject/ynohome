@@ -9,76 +9,12 @@
 </head>
 <body>
   <div id="nexus">
-    <div id="doors">
-      <div class="doorRow">
-        <div id="doorUnevenDream" class="door" data-game-id="unevendream">
-          <img class="logo" src="images/logo_unevendream.png" />
-          <img class="doorImg" width="68" height="120" src="images/door_unevendream.gif" />
-          <div class="playerCountContainer"></div>
-        </div>
-      </div>
-      <div class="doorRow">
-        <div class="spacer"></div>
-        <div id="doorAmillusion" class="door" data-game-id="amillusion">
-          <img class="logo" src="images/logo_amillusion.png" />
-          <img class="doorImg" width="68" height="120" src="images/door_amillusion.gif" />
-          <div class="playerCountContainer"></div>
-        </div>
-        <div class="spacer"></div>
-        <div id="doorDeepDreams" class="door" data-game-id="deepdreams">
-          <img class="logo" src="images/logo_deepdreams.png" />
-          <img class="doorImg" width="68" height="120" src="images/door_deepdreams.gif" />
-          <div class="playerCountContainer"></div>
-        </div>
-        <div class="spacer"></div>
-      </div>
-      <div class="doorRow">
-        <div id="doorYume" class="door" data-game-id="yume">
-          <img class="logo" src="images/logo_yume.png" />
-          <img class="doorImg" width="68" height="120" src="images/door_yume.gif" />
-          <div class="playerCountContainer"></div>
-        </div>
-        <div class="spacer"></div>
-        <!--<div id="siteLogo">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 228 52">
-            <path d="m0 0h8v16h8v-16h8v24h-8v16h-8v-16h-8v-24m3 3h2v16h14v-16h2v18h-8v16h-2v-16h-8v-18m25-3h24v40h-8v-32h-8v32h-8v-40m3 3h18v34h-2v-32h-14v32h-2v-34m25-3h24v40h-24v-40m2 2h20v36h-20v-36m-2 7h2m-2 4h2m-2 13h2m-2 4h2m2-26h16v32h-16v-32m2 4h12v8h-12v-8m3 3h6v2h-6v-2m-1 7h8v4h-8v-4m-2 6h12v8h-12v-8m3 3h6v2h-6v-2m9-10h1v3h-1v-3m10-5h20v28h-12v12h-8v-40m3 3h14v22h-12v12h-2v-34m2 2h10v18h-10v-18m3 3h4v12h-4v-12m16-8h16v8h-8v20h-8v-28m3 3h10v2h-8v20h-2v-22m17-3h20v28h-20v-28m3 3h14v22h-14v-22m2 2h10v18h-10v-18m3 3h4v12h-4v-12m16-20h8v8h-8v-8m2 2h4v4h-4v-4m-2 10h8v40h-12v-8h4v-32m3 3h2v34h-6v-2h4v-32m9-3h20v16h-12v4h12v8h-20v-28m3 3h14v10h-2v-8h-10v18h12v2h-14v-22m5 5h4v5h-4v-5m16-8h20v12h-8v-4h-4v12h4v-4h8v12h-20v-28m3 3h14v6h-2v-4h-10v18h10v-4h2v6h-14v-22m21-11h8v8h8v8h-8v12h8v8h-16v-36m3 3h2v8h8v2h-8v18h8v2h-10v-30" />
-          </svg>
-        </div>!-->
-        <div id="door2kki" class="door" data-game-id="2kki">
-          <img class="logo" src="images/logo_2kki.png" />
-          <img class="doorImg" width="68" height="120" src="images/door_2kki.gif" />
-          <div class="playerCountContainer"></div>
-        </div>
-        <div class="spacer"></div>
-        <div id="doorFlow" class="door" data-game-id="flow">
-          <img class="logo" src="images/logo_flow.png" />
-          <img class="doorImg" width="68" height="120" src="images/door_flow.gif" />
-          <div class="playerCountContainer"></div>
-        </div>
-      </div>
-      <div class="doorRow">
-        <div class="spacer"></div>
-        <div id="doorSomeday" class="door" data-game-id="someday">
-          <img class="logo" src="images/logo_someday.png" />
-          <img class="doorImg" width="68" height="120" src="images/door_someday.gif" />
-          <div class="playerCountContainer"></div>
-        </div>
-        <div class="spacer"></div>
-        <div id="doorPrayers" class="door" data-game-id="prayers">
-          <img class="logo" src="images/logo_prayers.png" />
-          <img class="doorImg" width="68" height="120" src="images/door_prayers.gif" />
-          <div class="playerCountContainer"></div>
-        </div>
-        <div class="spacer"></div>
-      </div>
-      <div class="doorRow">
-        <div id="doorBraingirl" class="door" data-game-id="braingirl">
-          <img class="logo" src="images/logo_braingirl.png" />
-          <img class="doorImg" width="68" height="120" src="images/door_braingirl.gif" />
-          <div class="playerCountContainer"></div>
-        </div>
+    <div id="siteLogo" class="fade fadeUp fadeSlow">
+      <img src="images/logo_yno.png" />
     </div>
+    <div id="doors"></div>
   </div>
+  <div id="background" class="fade fadeSlow"></div>
   <template>
     <svg viewBox="0 0 18 18" xmlns="http://www.w3.org/2000/svg" width="24" height="24">
       <path d="M 9 4 A 1 1 90 0 0 9 9 A 1 1 90 0 0 9 4 M 5 17 C 5 12 6 10 9 10 C 12 10 13 12 13 17 Q 9 19 5 17 M 5 0 A 1 1 90 0 0 5 5 A 1 1 90 0 0 5 0 M 1 13 C 1 8 2 6 5 6 C 5.375 6 5.5 6 6.25 6.125 C 6 7.75 7.5 9.25 8.75 9.25 Q 8.875 9.5 8.875 9.75 C 7.125 9.75 5.25 10.75 5 13.875 Q 2.625 13.875 1 13 M 13 0 A 1 1 90 0 1 13 5 A 1 1 90 0 1 13 0 M 17 13 C 17 8 16 6 13 6 C 12.625 6 12.5 6 11.75 6.125 C 12 7.75 10.5 9.25 9.25 9.25 Q 9.125 9.5 9.125 9.75 C 10.875 9.75 12.75 10.75 13 13.875 Q 15.375 13.875 17 13" />
@@ -119,8 +55,67 @@
     </mask>
   </svg>
   <script>
+    const gameIds = [
+      'yume',
+      '2kki',
+      'flow',
+      'unevendream',
+      'deepdreams',
+      'prayers',
+      'someday',
+      'amillusion',
+      'braingirl'
+    ];
+
     const nexus = document.getElementById('nexus');
+    const doorsContainer = document.getElementById('doors');
+
+    document.getElementById('siteLogo').classList.add('fadeIn');
+    document.getElementById('background').classList.add('fadeIn');
+
+    gameIds.forEach((gameId, g) => {
+      const door = document.createElement('div');
+      door.classList.add('door');
+      door.classList.add('fade');
+      door.dataset.gameId = gameId;
+
+      const playerCountContainer = document.createElement('div');
+      playerCountContainer.classList.add('playerCountContainer');
+
+      const doorImgContainer = document.createElement('div');
+      doorImgContainer.classList.add('doorImgContainer');
+
+      const doorImg = document.createElement('img');
+      doorImg.classList.add('doorImg');
+      doorImg.src = `images/door_${gameId}.gif`;
+
+      const doorShadowImg = document.createElement('img');
+      doorShadowImg.classList.add('doorShadowImg');
+      doorShadowImg.src = 'images/door_shadow.png';
+
+      doorImgContainer.append(doorImg);
+      doorImgContainer.append(doorShadowImg);
+
+      const logoContainer = document.createElement('div');
+      logoContainer.classList.add('logoContainer');
+
+      const logo = document.createElement('img');
+      logo.classList.add('logo');
+      logo.src = `images/logo_${gameId}.png`;
+
+      logoContainer.append(logo);
+
+      door.append(playerCountContainer);
+      door.append(doorImgContainer);
+      door.append(logoContainer);
+
+      doorsContainer.append(door);
+
+      setTimeout(() => door.classList.add('fadeIn'), 75 * g + 750);
+    });
+
     const doors = document.querySelectorAll('.door');
+    
     for (let door of doors) {
       const playerCountContainer = door.querySelector('.playerCountContainer');
       const playerCountLabel = document.createElement('label');
@@ -149,6 +144,14 @@
         .then(count => !isNaN(count) && (playerCountLabel.textContent = count))
         .catch(err => console.error(err));
     }
+
+    window.onresize = function () { setTimeout(onResize, 0); };
+
+    function onResize() {
+      document.getElementById('zoom').style.height = document.body.offsetHeight;
+    }
+
+    setTimeout(onResize, 0);
 
     function doDoorAnim(nexus, door) {
       const zoom = document.getElementById('zoom');
