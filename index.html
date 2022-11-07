@@ -70,8 +70,10 @@
     const nexus = document.getElementById('nexus');
     const doorsContainer = document.getElementById('doors');
 
-    document.getElementById('siteLogo').classList.add('fadeIn');
-    document.getElementById('background').classList.add('fadeIn');
+    setTimeout(() => {
+      document.getElementById('siteLogo').classList.add('fadeIn');
+      document.getElementById('background').classList.add('fadeIn');
+    }, 0);
 
     gameIds.forEach((gameId, g) => {
       const door = document.createElement('div');
