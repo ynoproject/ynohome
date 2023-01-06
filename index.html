@@ -205,12 +205,21 @@
         const doorImg = door.querySelector('.doorImg');
         doorImg.src = doorImg.src.replace('door_', 'door_open_');
         window.setTimeout(() => {
-          window.setTimeout(() => {
-            zoom.classList.remove('active');
-            cssAnim.remove();
-            doorImg.src = doorImg.src.replace('_open', '');
-            door.classList.remove('active');
-          }, 100);
+          // wait for page navigation
+          window.onpagehide = () => {
+            // wait for document to be hidden
+            // must be done here to not respond to switching tabs
+            window.onpagehide = null;
+            document.onvisibilitychange = () => {
+              // make sure the document is being hidden
+              if (document.visibilityState != 'hidden') return;
+              document.onvisibilitychange = null;
+              zoom.classList.remove('active');
+              cssAnim.remove();
+              doorImg.src = doorImg.src.replace('_open', '');
+              door.classList.remove('active');
+            };
+          };
           window.location.href = `/${gameId}/`;
         }, 1500);
       }, 1000);
