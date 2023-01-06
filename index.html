@@ -205,12 +205,13 @@
         const doorImg = door.querySelector('.doorImg');
         doorImg.src = doorImg.src.replace('door_', 'door_open_');
         window.setTimeout(() => {
-          window.setTimeout(() => {
+          window.onunload = () => {
+            console.log("fire");
             zoom.classList.remove('active');
             cssAnim.remove();
             doorImg.src = doorImg.src.replace('_open', '');
             door.classList.remove('active');
-          }, 100);
+          };
           window.location.href = `/${gameId}/`;
         }, 1500);
       }, 1000);
