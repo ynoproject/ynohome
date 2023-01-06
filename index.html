@@ -210,7 +210,7 @@
             // wait for document to be hidden
             // must be done here to not respond to switching tabs
             window.onpagehide = null;
-            document.onvisibilitychange = (event) => {
+            document.onvisibilitychange = () => {
               // make sure the document is being hidden
               if (document.visibilityState != 'hidden') return;
               document.onvisibilitychange = null;
