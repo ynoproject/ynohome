@@ -212,7 +212,8 @@
             window.onpagehide = null;
             document.onvisibilitychange = () => {
               // make sure the document is being hidden
-              if (document.visibilityState != 'hidden') return;
+              if (document.visibilityState !== 'hidden')
+                return;
               document.onvisibilitychange = null;
               zoom.classList.remove('active');
               cssAnim.remove();
