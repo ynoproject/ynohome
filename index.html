@@ -206,7 +206,6 @@
         doorImg.src = doorImg.src.replace('door_', 'door_open_');
         window.setTimeout(() => {
           window.onunload = () => {
-            console.log("fire");
             zoom.classList.remove('active');
             cssAnim.remove();
             doorImg.src = doorImg.src.replace('_open', '');
