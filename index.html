@@ -205,11 +205,12 @@
         const doorImg = door.querySelector('.doorImg');
         doorImg.src = doorImg.src.replace('door_', 'door_open_');
         window.setTimeout(() => {
-          window.onunload = () => {
+          window.onpagehide = () => {
             zoom.classList.remove('active');
             cssAnim.remove();
             doorImg.src = doorImg.src.replace('_open', '');
             door.classList.remove('active');
+            window.onpagehide = null;
           };
           window.location.href = `/${gameId}/`;
         }, 1500);
