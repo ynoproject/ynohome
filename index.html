@@ -145,7 +145,7 @@
     window.setInterval(() => doors.forEach(door => fetchAndUpdatePlayerCount(door.dataset.gameId, door.querySelector('.playerCountContainer label'))), 60000);
 
     function fetchAndUpdatePlayerCount(gameId, playerCountLabel) {
-      fetch(`connect/${gameId}/api/players`)
+      fetch(`https://connect.ynoproject.net/${gameId}/api/players`)
         .then(response => response.text())
         .then(count => !isNaN(count) && (playerCountLabel.textContent = count))
         .catch(err => console.error(err));
