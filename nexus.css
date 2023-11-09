@@ -129,6 +129,15 @@ body > svg {
   pointer-events: none;
 }
 
+#footerIconContainer {
+  display: flex;
+  justify-content: space-around;
+  width: 200px;
+  max-width: calc(100vw - 16px);
+  margin: 0 auto;
+  padding-bottom: 32px;
+}
+
 #background {
   position: fixed;
   width: 100vw;
@@ -138,6 +147,10 @@ body > svg {
   background-size: cover;
   background-position-x: center;
   z-index: -1;
+}
+
+.nopointer {
+  pointer-events: none;
 }
 
 .unselectable {
@@ -161,6 +174,24 @@ label {
   -webkit-text-fill-color: transparent;
   background-clip: text;
   filter: drop-shadow(1.5px 1.5px rgba(0, 0, 0, 1));
+}
+
+@media (hover: hover) {
+  .iconLink {
+    transition: transform 0.125s cubic-bezier(0.7, 0, 0.7, 1.5);
+  }
+
+  .iconLink:hover {
+    transform: scale(1.25);
+  }
+}
+
+.iconLink {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  appearance: button;
+  -webkit-appearance: button;
 }
 
 .fade {
