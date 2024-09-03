@@ -1,0 +1,20 @@
+{
+  "short_name": "YNOProject",
+  "name": "Yume Nikki Online Project",
+  "icons": [
+    {
+      "src": "/images/favicon-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/images/favicon-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ],
+  "start_url": ".",
+  "display": "standalone",
+  "theme_color": "#391a1e",
+  "background_color": "#000000"
+}
