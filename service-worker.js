@@ -18,7 +18,16 @@ function apiFetch(path, opts) {
 
 self.addEventListener('push', function(event) {
   const { title, ...options } = event.data.json();
-  event.waitUntil(self.registration.showNotification(title, options));
+  event.waitUntil(
+    self.clients.matchAll({ type: 'window' })
+      .then(clients => {
+        // TODO: Customize for more kinds of toasts as needed
+        for (const client of clients)
+          client.postMessage({ _type: 'toast', args: [options.body || title, 'calendar', true] });
+        if (!clients.length)
+          return self.registration.showNotification(title, options);
+      })
+  );
 });
 
 self.addEventListener('notificationclick', function(event) {
