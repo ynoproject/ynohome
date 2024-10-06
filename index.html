@@ -108,7 +108,9 @@
       document.getElementById('background').classList.add('fadeIn');
     }, 0);
 
-    navigator.serviceWorker.register('./service-worker.js');
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('./service-worker.js');
+    }
 
     gameIds.forEach((gameId, g) => {
       const door = document.createElement('div');
