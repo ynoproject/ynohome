@@ -17,14 +17,16 @@ function apiFetch(path, opts) {
 };
 
 self.addEventListener('push', function(event) {
-  const { title, ...options } = event.data.json();
+  let { title, metadata, ...options } = event.data.json();
+  if (!metadata)
+    metadata = {};
   event.waitUntil(
     self.clients.matchAll({ type: 'window' })
       .then(clients => {
-        // TODO: Customize for more kinds of toasts as needed
-        for (const client of clients)
-          client.postMessage({ _type: 'toast', args: [options.body || title, 'calendar', true] });
-        if (!clients.length)
+        if (!metadata.noRelay)
+          for (const client of clients)
+            client.postMessage({ _type: 'toast', metadata, args: [options.body || title, metadata.ynoIcon || 'info', !!metadata.persist] });
+        if (!clients.length || !!metadata.noRelay)
           return self.registration.showNotification(title, options);
       })
   );
