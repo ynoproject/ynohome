@@ -247,6 +247,12 @@
         playAudio(`door_${gameId}.wav`, 0.5);
         const doorImg = door.querySelector('.doorImg');
         doorImg.src = doorImg.src.replace('door_', 'door_open_');
+
+        setTimeout(function(){
+          circle.style.backgroundColor = "black";
+          circle.style.opacity = "0";
+        }, 500);
+
         window.setTimeout(() => {
           // wait for page navigation
           window.onpagehide = () => {
@@ -264,6 +270,7 @@
               door.classList.remove('active');
             };
           };
+          circle.style.opacity = "1";
           window.location.href = `/${gameId}/`;
         }, 1500);
       }, 1000);
