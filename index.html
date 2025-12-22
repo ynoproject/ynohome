@@ -13,6 +13,7 @@
     <div id="siteLogo" class="fade fadeUp fadeSlow">
       <img src="images/logo_yno.png" />
     </div>
+    <div id="eventTimeDisplay" class="fade fadeUp fadeSlow unselectable"></div>
     <div id="doors"></div>
     <div id="footerIconContainer" class="fade nopointer">
       <a href="https://ynoproject.net/discord" target="_blank" class="iconLink" title="Discord">
@@ -108,7 +109,39 @@
     setTimeout(() => {
       document.getElementById('siteLogo').classList.add('fadeIn');
       document.getElementById('background').classList.add('fadeIn');
+      document.getElementById('eventTimeDisplay').classList.add('fadeIn');
     }, 0);
+
+    const eventConfig = {
+      targetUTC: Date.UTC(2025, 11, 28, 5, 0),
+      message: 'Collective Unconscious will be available to play on YNOproject until'
+    };
+
+    function displayEventTime() {
+      try {
+        const now = new Date();
+        const eventElement = document.getElementById('eventTimeDisplay');
+        if (!eventElement) return;
+        if (now.getTime() >= eventConfig.targetUTC) {
+          eventElement.remove();
+          return;
+        }
+        const localDate = new Date(eventConfig.targetUTC);
+        const year = localDate.getFullYear();
+        const month = String(localDate.getMonth() + 1).padStart(2, '0');
+        const date = String(localDate.getDate()).padStart(2, '0');
+        const hours = String(localDate.getHours()).padStart(2, '0');
+        const minutes = String(localDate.getMinutes()).padStart(2, '0');
+        const weekday = localDate.toLocaleDateString('en-US', { weekday: 'short' });
+        const dateStr = `${year}/${month}/${date} (${weekday}) ${hours}:${minutes}`;
+        eventElement.innerHTML = `<span style="font-size: 0.75em;">${eventConfig.message}</span><br>${dateStr}`;
+        eventElement.style.display = 'block';
+      } catch (error) {
+        console.error('Error displaying event time:', error);
+      }
+    }
+
+    displayEventTime();
 
     if ('serviceWorker' in navigator) {
       navigator.serviceWorker.register('./service-worker.js');
